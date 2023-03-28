@@ -1,0 +1,93 @@
+/* Custom CSS for Shopping List webapp */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f7f7f7;
+  }
+  
+  .container {
+    margin-top: 30px;
+  }
+  
+  header {
+    text-align: center;
+  }
+  
+  .table {
+    margin-top: 30px;
+    width:min-content;
+  }
+  
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+  
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    text-align: right;
+  }
+  
+  .table td:last-child {
+    text-align: center;
+  }
+  
+  .table td.completed {
+    text-decoration: line-through;
+  }
+  
+  .btn-primary {
+    margin-top: 10px;
+  }
+  .form-group input{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .form-group {
+    display: flex;
+    
+  }
+  #anadir {
+    text-align: center !important;
+  }
+
+  
+  @media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    th {
+      display:inline-table;
+      text-align: center;
+      vertical-align: middle;
+    }
+    td {
+
+      display:inline-block;
+      
+    }
+    td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      margin-right: 10px;
+      display:inline-table;
+    }
+    td .btn {
+      width:5px;
+      font-size: 1rem!important;
+      padding:2em;
+      border-radius: 5px;
+
+    }
+    td .edit-btn {
+      display: none;
+
+    }
+    
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>ChrisGlock</title>
+  <!-- Bootstrap CSS -->
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/lcompracss.css">
+      <!-- Bootstrap Core CSS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+<body style="margin-top:100px;">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color:rgb(0, 0, 0);">
+      <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  Menu <i class="fa fa-bars"></i>
+              </button>
+              <a class="navbar-brand" href="index.html"></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                      <a href="about.html">Sobre mi</a>
+                  </li>
+                  <li>
+                      <a href="post.html">Proyectos</a>
+                  
+                  <li>
+                      <a href="app2.html">AppNotas</a>
+                  </li>
+                  <li>
+                      <a href="lcompra.html">AppCompras</a>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>Lista de compra</h1>
+    </header>
+    <form id="add-product-form">
+      <div class="form-group">
+        <label for="product-name">Nombre del producto</label>
+        <input type="text" class="form-control" id="product-name" required>
+      </div>
+      <div class="form-group">
+        <label for="product-price">Precio </label>
+        <input type="number" class="form-control" id="product-price" min="0" step="1" required>
+        <label for="cant-price">Cantidad</label>
+        <input type="number" class="form-control" id="cant-price" min="0" step="1" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="anadir" >Añadir producto</button>
+      
+    </form>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="product-list">
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <th></th>
+            <th id="total-price">$ 0.00</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Custom JS -->
+  <script src="/js/lcomprajs.js"></script>
+</body>
+</html>
