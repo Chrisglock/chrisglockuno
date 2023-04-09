@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
+  <!-- <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+	<meta http-equiv="Expires" content="0">-->
   <title>ChrisGlock</title>
+  
   <!-- Bootstrap CSS -->
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/lcompracss.css">
       <!-- Bootstrap Core CSS -->
     <link rel="shortcut icon" href="/favicon.ico">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
@@ -24,6 +27,7 @@
 
 </head>
 <body style="margin-top:100px;">
+  
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color:rgb(0, 0, 0);">
       <div class="container-fluid">
@@ -64,8 +68,9 @@
   <div class="container">
     <header>
       <h1>Lista de compra</h1>
+      <!-- <h2>(en desarrollo)</h2>-->
     </header>
-    <form id="add-product-form">
+    <form id="add-product-form" style="text-align:center;">
       <div class="form-group">
         <label for="product-name">Nombre del producto</label>
         <input type="text" class="form-control" id="product-name" required>
@@ -102,11 +107,28 @@
       </table>
     </div>
   </div>
+  
+  <div class="ocean">
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
   <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
   <!-- Custom JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="/js/lcomprajs.js"></script>
+
+
+  <!-- Custom JS -->
+  
 </body>
 </html>

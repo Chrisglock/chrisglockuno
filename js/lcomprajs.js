@@ -8,7 +8,7 @@ const totalPrice = document.getElementById('total-price');
 document.getElementById('add-product-form').addEventListener('submit', function(event) {
   event.preventDefault();
   const name = document.getElementById('product-name').value.trim();
-  const price = parseFloat(document.getElementById('product-price').value.trim());
+  var price = parseFloat(document.getElementById('product-price').value.trim());
   const cantidad = parseInt(document.getElementById('cant-price').value.trim());
 
   if (name !== '' && !isNaN(price)) {
@@ -33,15 +33,12 @@ productList.addEventListener('click', function(event) {
 
     if (!checkbox.checked){
       const newPrice = prompt('Agrega el nuevo precio ' + product.name + ':', product.price);
-    }
-    
-    if (!isNaN(parseFloat(newPrice))) {
-      // Update the product price
       product.price = parseFloat(newPrice);
-
+    }
       // Render the updated product list
       renderProducts();
-    }
+    
+    
   } else if (event.target.matches('.delete-btn')) {
     // Delete button clicked
     // Update the total price
