@@ -24,6 +24,7 @@ header {
 .table th,
 .table td {
   vertical-align: middle;
+  
 }
 
 .table th:nth-child(2),
@@ -58,6 +59,13 @@ header {
 #bs-example-navbar-collapse-1{
   text-align: center;
 }
+#pricetd {
+  display: flex;
+}
+td .btn {
+  
+  margin-right: 5px;
+}
 @media screen and (max-width: 600px) {
  
   table {
@@ -68,12 +76,15 @@ table th, table td ,table thead {
   padding: 10px;
   text-align: left;
   }
-
+td {
+  margin-right: 10px;
+}
+/*
   thead{
     display: inline-table;
     display: block;
   }
-/*
+
   thead {
     
     display: inline-table;
@@ -104,10 +115,14 @@ table th, table td ,table thead {
     padding: 0px!important;
     border-radius: 5px;
     white-space:nowrap;
+    margin-right: 5px;
   }
   td .edit-btn {
     display:inline-block;
 
+  }
+  #pricetd {
+    display: flex;
   }
   
 }
