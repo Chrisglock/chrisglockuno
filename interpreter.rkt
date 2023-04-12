@@ -31,7 +31,7 @@
                                (e-if (desugar right)
                                      (e-bool #t)
                                      (e-bool #f) ))]
-  [(sugar-let namevar value body) (e-app (e-lam namevar (desugar body)) value)];(desugar value)
+  [(sugar-let namevar value body) (e-app (e-lam namevar (desugar body)) (desugar value))];(desugar value)
       );(lambda (y) (+ 2 y)) result:(Number -> Number)
   )
 
@@ -52,7 +52,11 @@
                            [(op-num-eq? op)(op-num-eq-aux (interp-aux left env)(interp-aux right env))]
                            )
                          ];construir las 4 ops posiblemente con un cond en interp-aux
-  [(e-if cond consq altern) (if (v-bool-value (interp-aux cond env)) (interp-aux consq env) (interp-aux altern env))]
+  [(e-if cond consq altern) (if (v-bool? (interp-aux cond env))
+                                (if (v-bool-value (interp-aux cond env)) (interp-aux consq env) (interp-aux altern env))
+(raise-error (err-if-got-non-boolean (interp-aux cond env)))
+                              )
+                                ]
   [(e-lam param body)(v-fun param body env)];ambos e-lam y e-app necesitan un Env(ambiente)
   [(e-app func arg)(let ([f-value (interp-aux func env)])
                      (interp-aux (v-fun-body f-value)
