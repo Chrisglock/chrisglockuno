@@ -68,7 +68,7 @@
     [(sugar-let a b c)(error 'let-error "desugar error")]
     )
   );
-;(extend-env(bind 'sus (v-str "sexooo")) mt-env)
+;(extend-env(bind 'sus (v-str "texto")) mt-env) prueba de bind
 (define (op-plus-aux [l : Value] [r : Value]) : Value
     (cond
         [(and (v-num? l) (v-num? r))
@@ -108,9 +108,9 @@
         [(and (v-num? l) (v-num? r))
           (v-bool (eq? (v-num-value l) (v-num-value r)))]
         [else
-          (raise-error(err-bad-arg-to-op (op-str-eq) (cond
-                                                   [(not (v-str? l))l]
-                                                   [(not (v-str? r))r]
+          (raise-error(err-bad-arg-to-op (op-num-eq) (cond
+                                                   [(not (v-num? l))l]
+                                                   [(not (v-num? r))r]
                                                    )))
           ]))
 

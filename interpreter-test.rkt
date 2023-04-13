@@ -53,9 +53,29 @@
 
        (test-true "basic test paret let"
                (v-num?(eval `{let (x 1) (+ x 2)})))
+ ;combined test 
+       (test-equal? "combination test  paret num= y +"
+               (eval `{num= 20 (+ 5 (+ (+ 5 5) 5 ))}) (v-bool #t))
+;errores esperados test
+    (test-raises-interp-error? "str in + err-bad-arg-to-op"
+                             (eval `{+ 2 "bad"})
+                             (err-bad-arg-to-op (op-plus) (v-str "bad")))
+
+     (test-raises-interp-error? "num in ++ err-bad-arg-to-op"
+                             (eval `{++ 2 "bad"})
+                             (err-bad-arg-to-op (op-append) (v-num 2)))
   
-       (test-equal? "basic test 2 paret let"
-               (eval `{let (x 1) (+ x 8)}) (v-num 9))
+      (test-raises-interp-error? "num in str= err-bad-arg-to-op"
+                             (eval `{str= 2 2})
+                             (err-bad-arg-to-op (op-str-eq) (v-num 2)))
+  
+      (test-raises-interp-error? "error mal argumento dentro de otra op err-bad-arg-to-op"
+                             (eval `{num= "string" (+ 2 3)})
+                             (err-bad-arg-to-op (op-num-eq) (v-str "string")))
+       (test-raises-interp-error? "cond no es boolean err-if-got-non-boolean"
+                             (eval `{if "string" 0 1})
+                             (err-if-got-non-boolean (v-str "string")))
+  
 ;faltan test de: operaciones combinadas, errores esperados, casoslimite 
   )
 ;; DO NOT EDIT BELOW THIS LINE =================================================
