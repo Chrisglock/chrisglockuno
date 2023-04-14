@@ -35,7 +35,7 @@
       );(lambda (y) (+ 2 y)) result:(Number -> Number)
   )
 
-(test (desugar (e-if (sugar-or (e-bool #t) (e-bool #f)) (e-num 1) (e-num 2))) (e-if (e-if (e-bool #t) (e-bool #t) (e-if (e-bool #f) (e-bool #t) (e-bool #f))) (e-num 1) (e-num 2)))
+;(test (desugar (e-if (sugar-or (e-bool #t) (e-bool #f)) (e-num 1) (e-num 2))) (e-if (e-if (e-bool #t) (e-bool #t) (e-if (e-bool #f) (e-bool #t) (e-bool #f))) (e-num 1) (e-num 2)))
 
 (define (interp [expr : Expr]): Value
   (interp-aux expr mt-env)

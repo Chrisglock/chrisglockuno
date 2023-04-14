@@ -25,9 +25,9 @@
              v-fun? (eval `{lam x 5}))
   (test-raises-interp-error? "Passing Str to + results in err-bad-arg-to-op"
                              (eval `{+ "bad" 1})
-                             (err-bad-arg-to-op (op-plus) (v-str "bad")))
+                             (err-bad-arg-to-op (op-plus) (v-str "bad"))))
 ;;MY TESTS
-
+(define/provide-test-suite interpreter-basic-tests
   (test-equal? "basic test paret and"
                (eval `{and true true}) (v-bool #t))
   (test-equal? "basic test paret or"
@@ -53,16 +53,37 @@
 
        (test-true "basic test paret let"
                (v-num?(eval `{let (x 1) (+ x 2)})))
- ;combined test 
+  (test-equal? "basic test paret let"
+               (eval `{let (x 1) (+ x 2)}) (v-num 3))
+  
+)
+ ;combined test
+(define/provide-test-suite interpreter-composed-tests
        (test-equal? "combination test  paret num= y +"
                (eval `{num= 20 (+ 5 (+ (+ 5 5) 5 ))}) (v-bool #t))
+  
+        (test-equal? "combination test  paret num= y +"
+               (eval `{num= 20 (+ 5 (+ (+ 5 5) 5 ))}) (v-bool #t))
+  
+    (test-pred "combination test  paret num= y +"
+             v-bool? (eval `{num= 20 (+ 5 (+ (+ 5 5) 5 ))}))
+
+      (test-pred "combination test  paret if or and (nor gate)"
+             v-bool? (eval `{}))
+  
+
+  )
 ;errores esperados test
+(define/provide-test-suite interpreter-error-tests
     (test-raises-interp-error? "str in + err-bad-arg-to-op"
                              (eval `{+ 2 "bad"})
                              (err-bad-arg-to-op (op-plus) (v-str "bad")))
+      (test-raises-interp-error? "num in + err-bad-arg-to-op"
+                             (eval `{str= (+ 5 "bad") "hello"})
+                             (err-bad-arg-to-op (op-plus) (v-str "bad")))
 
      (test-raises-interp-error? "num in ++ err-bad-arg-to-op"
-                             (eval `{++ 2 "bad"})
+                             (eval `{++ "bad" 2})
                              (err-bad-arg-to-op (op-append) (v-num 2)))
   
       (test-raises-interp-error? "num in str= err-bad-arg-to-op"
@@ -72,12 +93,28 @@
       (test-raises-interp-error? "error mal argumento dentro de otra op err-bad-arg-to-op"
                              (eval `{num= "string" (+ 2 3)})
                              (err-bad-arg-to-op (op-num-eq) (v-str "string")))
-       (test-raises-interp-error? "cond no es boolean err-if-got-non-boolean"
+       (test-raises-interp-error? "cond en if no es boolean err-if-got-non-boolean"
                              (eval `{if "string" 0 1})
                              (err-if-got-non-boolean (v-str "string")))
-  
+       (test-raises-interp-error? "err-unbound-id"
+                             (eval `{let (x 1) (+ x y)})
+                             (err-unbound-id 'y)
+                             )
+       (test-raises-interp-error? "err-unbound-id2"
+                             (eval `{let (y 1) (+ x y)})
+                             (err-unbound-id 'x)
+                             )
+       (test-raises-interp-error? "definicion en x en expr err-unbound-id3"
+                             (eval `{let (x x) (+ x 2)})
+                             (err-unbound-id 'x)
+                             )
+  )  
 ;faltan test de: operaciones combinadas, errores esperados, casoslimite 
-  )
+  
 ;; DO NOT EDIT BELOW THIS LINE =================================================
 
 (run-tests interpreter-tests)
+(run-tests interpreter-basic-tests)
+(run-tests interpreter-composed-tests)
+(run-tests interpreter-error-tests)
+;(run-tests interpreter-borderline-tests)
